@@ -1,0 +1,22 @@
+import { Query, Resolver, Args, Mutation } from '@nestjs/graphql';
+import { UsersService } from './users.service';
+import { Optional } from '../common/types';
+import { User } from './interfaces';
+import { RegisterUserDto } from './dto';
+
+@Resolver('User')
+export class UsersResolvers {
+  constructor(private readonly usersService: UsersService) {}
+
+  @Query('user')
+  async findUserInfo(@Args('id') id: string): Promise<Optional<User>> {
+    return await this.usersService.findUserById(id);
+  }
+
+  @Mutation()
+  async registerUser(
+    @Args('registerUserInput') registerUserDto: RegisterUserDto,
+  ): Promise<User> {
+    return await this.usersService.registerUser(registerUserDto);
+  }
+}
