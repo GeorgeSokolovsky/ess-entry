@@ -15,6 +15,7 @@ export abstract class IQuery {
 }
 
 export class User {
+    id: string;
     login: string;
     email?: string;
     role?: string;
