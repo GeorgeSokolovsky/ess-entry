@@ -1,4 +1,5 @@
 type User {
+  id: ID!
   login: String!
   email: String
   role: String
