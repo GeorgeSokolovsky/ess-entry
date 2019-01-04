@@ -1,0 +1,22 @@
+scalar Payload
+
+type Validator {
+    _id: ID!
+    rule: String!
+    payload: Payload
+    createdAt: String!
+    updatedAt: String!
+}
+
+input CreateValidatorInput {
+    rule: String!
+    payload: Payload
+}
+
+type Query {
+    validators: [Validator!]
+}
+
+type Mutation {
+    createValidator(createValidatorInput: CreateValidatorInput): Validator!
+}

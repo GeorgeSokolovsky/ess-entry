@@ -6,9 +6,7 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   app.useGlobalPipes(
-    new ValidationPipe({
-      whitelist: true,
-    }),
+    new ValidationPipe(),
   );
 
   await app.listen(9000, () => console.info('ESS: Entry point is running'));
