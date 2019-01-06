@@ -1,8 +1,8 @@
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
-import { Optional } from '../../common/types';
+import { Optional } from '@common/types';
 import { CreateValidatorDto } from './dto';
 import { ValidatorsService } from './validators.service';
-import { Validator } from '../../common/schema/graphql.schema';
+import { Validator } from '@common/schema/graphql.schema';
 
 @Resolver('Validator')
 export class ValidatorsResolvers {

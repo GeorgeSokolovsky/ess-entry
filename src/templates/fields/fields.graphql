@@ -1,0 +1,14 @@
+type Field {
+  _id: ID!
+  name: String!
+  type: String!
+}
+
+input CreateFieldInput {
+  name: String!
+  type: String!
+}
+
+type Mutation {
+  createField(createFieldInput: CreateFieldInput): Field!
+}

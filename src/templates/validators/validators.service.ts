@@ -1,17 +1,12 @@
 import { Injectable } from '@nestjs/common';
-import { Client, ClientProxy, Transport } from '@nestjs/microservices';
+import { Client, ClientProxy } from '@nestjs/microservices';
 import { CreateValidatorDto } from './dto';
-import { Validator } from '../../common/schema/graphql.schema';
+import { Validator } from '@common/schema/graphql.schema';
+import { templatesConnectOptions } from '../config';
 
 @Injectable()
 export class ValidatorsService {
-  @Client({
-    transport: Transport.TCP,
-    options: {
-      host: 'localhost',
-      port: 9002,
-    },
-  })
+  @Client(templatesConnectOptions)
   private readonly client: ClientProxy;
 
   async create(createValidatorDto: CreateValidatorDto): Promise<Validator> {

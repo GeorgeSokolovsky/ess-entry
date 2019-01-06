@@ -1,4 +1,9 @@
 /* tslint:disable */
+export class CreateFieldInput {
+    name: string;
+    type: string;
+}
+
 export class CreateValidatorInput {
     rule: string;
     payload?: Payload;
@@ -9,7 +14,15 @@ export class RegisterUserInput {
     password: string;
 }
 
+export class Field {
+    _id: string;
+    name: string;
+    type: string;
+}
+
 export abstract class IMutation {
+    abstract createField(createFieldInput?: CreateFieldInput): Field | Promise<Field>;
+
     abstract createValidator(createValidatorInput?: CreateValidatorInput): Validator | Promise<Validator>;
 
     abstract registerUser(registerUserInput?: RegisterUserInput): User | Promise<User>;

@@ -11,7 +11,12 @@
     "target": "es6",
     "sourceMap": true,
     "outDir": "./dist",
-    "baseUrl": "./"
+    "baseUrl": "./",
+    "paths": {
+      "@common/*": [
+        "src/common/*"
+      ]
+    }
   },
   "exclude": ["node_modules"]
 }
