@@ -14,4 +14,14 @@ export class FieldsService {
       .send({ cmd: 'create_field' }, createFieldDto)
       .toPromise();
   }
+
+  async findAll(): Promise<ReadonlyArray<Field>> {
+    return await this.client.send({ cmd: 'find_all_fields' }, {}).toPromise();
+  }
+
+  async findByIds(ids: string[]): Promise<ReadonlyArray<Field>> {
+    return await this.client
+      .send({ cmd: 'find_by_ids_fields' }, ids)
+      .toPromise();
+  }
 }

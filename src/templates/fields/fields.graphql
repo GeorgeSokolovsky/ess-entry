@@ -9,6 +9,10 @@ input CreateFieldInput {
   type: String!
 }
 
+type Query {
+  fields: [Field!]
+}
+
 type Mutation {
   createField(createFieldInput: CreateFieldInput): Field!
 }

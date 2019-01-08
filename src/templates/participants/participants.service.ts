@@ -22,4 +22,10 @@ export class ParticipantsService {
       .send({ cmd: 'find_all_participants' }, {})
       .toPromise();
   }
+
+  async findByIds(ids: ReadonlyArray<string>): Promise<ReadonlyArray<Participant>> {
+    return await this.client
+      .send({ cmd: 'find_by_ids_participants'}, ids)
+      .toPromise();
+  }
 }

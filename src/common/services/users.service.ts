@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { Client, ClientProxy, Transport } from '@nestjs/microservices';
-import { Optional, UserToken } from '@common/types';
-import { User } from '@common/schema/graphql.schema';
-import { RegisterUserDto, SignInUserDto } from './dto';
+import { Optional, UserToken } from '../types';
+import { User } from '../schema/graphql.schema';
+import { RegisterUserDto, SignInUserDto } from '../../users/dto';
 
 @Injectable()
 export class UsersService {

@@ -6,6 +6,6 @@ import { ParticipantsService } from './participants.service';
 @Module({
   imports: [ValidatorsModule],
   providers: [ParticipantsResolvers, ParticipantsService],
-  exports: [ValidatorsModule],
+  exports: [ValidatorsModule, ParticipantsService],
 })
 export class ParticipantsModule {}

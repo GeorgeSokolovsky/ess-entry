@@ -1,0 +1,32 @@
+type Template {
+  _id: ID!
+  name: String!
+  fields: [Field!]
+  participants: [Participant!]
+  createdBy: User!
+  updatedBy: User
+  createdAt: String!
+  updatedAt: String
+}
+
+input CreateTemplateInput {
+  name: String!
+  fields: [String!]
+  participants: [String!]
+}
+
+input UpdateTemplateInput {
+  name: String!
+  fields: [String!]
+  participants: [String!]
+}
+
+type Query {
+  templates: [Template!]
+  template(id: ID!): Template
+}
+
+type Mutation {
+  createTemplate(createTemplateInput: CreateTemplateInput!): Template!
+  updateTemplate(id: ID!, updateTemplateInput: UpdateTemplateInput!): Template!
+}

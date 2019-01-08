@@ -1,20 +1,22 @@
 type Participant {
-    _id: ID!
-    name: String!
-    role: String!
-    validators: [Validator!]
+  _id: ID!
+  name: String!
+  role: String!
+  validators: [Validator!]
 }
 
 input CreateParticipantInput {
-    name: String!
-    role: String!
-    validators: [String]
+  name: String!
+  role: String!
+  validators: [String]
 }
 
 type Query {
-    participants: [Participant!]
+  participants: [Participant!]
 }
 
 type Mutation {
-    createParticipant(createParticipantInput: CreateParticipantInput): Participant!
+  createParticipant(
+    createParticipantInput: CreateParticipantInput
+  ): Participant!
 }

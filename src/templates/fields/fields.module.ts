@@ -4,5 +4,6 @@ import { FieldsService } from './fields.service';
 
 @Module({
   providers: [FieldsResolvers, FieldsService],
+  exports: [FieldsService],
 })
 export class FieldsModule {}

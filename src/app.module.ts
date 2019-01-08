@@ -3,13 +3,14 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { UsersModule } from './users/users.module';
 import { TemplatesModule } from './templates/templates.module';
 import { GraphQLConfigService } from './graphQL-config.service';
+import { CommonModule } from '@common/common.module';
 
 @Module({
   imports: [
     UsersModule,
     TemplatesModule,
     GraphQLModule.forRootAsync({
-      imports: [UsersModule],
+      imports: [CommonModule],
       useClass: GraphQLConfigService,
     }),
   ],
