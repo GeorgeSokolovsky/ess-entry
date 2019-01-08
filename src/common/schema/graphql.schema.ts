@@ -4,6 +4,12 @@ export class CreateFieldInput {
     type: string;
 }
 
+export class CreateParticipantInput {
+    name: string;
+    role: string;
+    validators?: string[];
+}
+
 export class CreateValidatorInput {
     rule: string;
     payload?: Payload;
@@ -23,12 +29,23 @@ export class Field {
 export abstract class IMutation {
     abstract createField(createFieldInput?: CreateFieldInput): Field | Promise<Field>;
 
+    abstract createParticipant(createParticipantInput?: CreateParticipantInput): Participant | Promise<Participant>;
+
     abstract createValidator(createValidatorInput?: CreateValidatorInput): Validator | Promise<Validator>;
 
     abstract registerUser(registerUserInput?: RegisterUserInput): User | Promise<User>;
 }
 
+export class Participant {
+    _id: string;
+    name: string;
+    role: string;
+    validators: Validator[];
+}
+
 export abstract class IQuery {
+    abstract participants(): Participant[] | Promise<Participant[]>;
+
     abstract validators(): Validator[] | Promise<Validator[]>;
 
     abstract user(id: string): User | Promise<User>;

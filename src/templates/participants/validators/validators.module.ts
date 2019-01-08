@@ -5,6 +5,6 @@ import { ValidatorsResolvers } from './validators.resolvers';
 
 @Module({
   providers: [PayloadScalar, ValidatorsService, ValidatorsResolvers],
-  exports: [PayloadScalar],
+  exports: [PayloadScalar, ValidatorsService],
 })
 export class ValidatorsModule {}

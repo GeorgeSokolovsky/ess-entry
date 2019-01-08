@@ -1,0 +1,20 @@
+type Participant {
+    _id: ID!
+    name: String!
+    role: String!
+    validators: [Validator!]
+}
+
+input CreateParticipantInput {
+    name: String!
+    role: String!
+    validators: [String]
+}
+
+type Query {
+    participants: [Participant!]
+}
+
+type Mutation {
+    createParticipant(createParticipantInput: CreateParticipantInput): Participant!
+}

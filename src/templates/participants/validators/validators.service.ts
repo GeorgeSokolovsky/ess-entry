@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { Client, ClientProxy } from '@nestjs/microservices';
 import { CreateValidatorDto } from './dto';
 import { Validator } from '@common/schema/graphql.schema';
-import { templatesConnectOptions } from '../config';
+import { templatesConnectOptions } from '../../config';
 
 @Injectable()
 export class ValidatorsService {
@@ -10,12 +10,20 @@ export class ValidatorsService {
   private readonly client: ClientProxy;
 
   async create(createValidatorDto: CreateValidatorDto): Promise<Validator> {
-    return this.client
+    return await this.client
       .send({ cmd: 'create_validator' }, createValidatorDto)
       .toPromise();
   }
 
   async findAll(): Promise<ReadonlyArray<Validator>> {
-    return this.client.send({ cmd: 'get_all_validators' }, {}).toPromise();
+    return await this.client
+      .send({ cmd: 'find_all_validators' }, {})
+      .toPromise();
+  }
+
+  async findByIds(ids: string[]): Promise<ReadonlyArray<Validator>> {
+    return await this.client
+      .send({ cmd: 'find_by_ids_validators' }, ids)
+      .toPromise();
   }
 }

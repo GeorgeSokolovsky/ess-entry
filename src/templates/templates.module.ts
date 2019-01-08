@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
-import { ValidatorsModule } from './validators/validators.module';
 import { FieldsModule } from './fields/fields.module';
+import { ParticipantsModule } from './participants/participants.module';
 
 @Module({
-  imports: [ValidatorsModule, FieldsModule],
+  imports: [ParticipantsModule, FieldsModule],
 })
 export class TemplatesModule {}
