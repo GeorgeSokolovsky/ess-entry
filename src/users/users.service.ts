@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { Client, ClientProxy, Transport } from '@nestjs/microservices';
-import { Optional } from '../common/types';
-import { RegisterUserDto } from './dto';
-import { User } from '../common/schema/graphql.schema';
+import { Optional, UserToken } from '@common/types';
+import { User } from '@common/schema/graphql.schema';
+import { RegisterUserDto, SignInUserDto } from './dto';
 
 @Injectable()
 export class UsersService {
@@ -23,5 +23,13 @@ export class UsersService {
     return await this.client
       .send({ cmd: 'register' }, registerUserDto)
       .toPromise();
+  }
+
+  async verifyToken(token: UserToken): Promise<User> {
+    return await this.client.send({ cmd: 'verify' }, token).toPromise();
+  }
+
+  async signIn(signInUserDto: SignInUserDto): Promise<UserToken> {
+    return await this.client.send({ cmd: 'token' }, signInUserDto).toPromise();
   }
 }

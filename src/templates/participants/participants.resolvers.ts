@@ -11,8 +11,11 @@ import { ValidatorsService } from './validators/validators.service';
 import { ParticipantsService } from './participants.service';
 import { CreateParticipantDto } from './dto';
 import { ParticipantQuery } from './interfaces';
+import { UseGuards } from '@nestjs/common';
+import { AuthGuard } from '@common/guards';
 
 @Resolver('Participant')
+@UseGuards(new AuthGuard())
 export class ParticipantsResolvers {
   constructor(
     private readonly participantsService: ParticipantsService,

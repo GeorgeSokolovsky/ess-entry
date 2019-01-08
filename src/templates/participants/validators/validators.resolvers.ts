@@ -3,8 +3,11 @@ import { Optional } from '@common/types';
 import { CreateValidatorDto } from './dto';
 import { ValidatorsService } from './validators.service';
 import { Validator } from '@common/schema/graphql.schema';
+import { UseGuards } from '@nestjs/common';
+import { AuthGuard } from '@common/guards';
 
 @Resolver('Validator')
+@UseGuards(new AuthGuard())
 export class ValidatorsResolvers {
   constructor(private readonly validatorsService: ValidatorsService) {}
 

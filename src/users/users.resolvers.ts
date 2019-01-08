@@ -1,8 +1,8 @@
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { UsersService } from './users.service';
-import { Optional } from '../common/types';
-import { RegisterUserDto } from './dto';
-import { User } from '../common/schema/graphql.schema';
+import { Optional, UserToken } from '@common/types';
+import { RegisterUserDto, SignInUserDto } from './dto';
+import { User } from '@common/schema/graphql.schema';
 
 @Resolver('User')
 export class UsersResolvers {
@@ -18,5 +18,12 @@ export class UsersResolvers {
     @Args('registerUserInput') registerUserDto: RegisterUserDto,
   ): Promise<User> {
     return await this.usersService.registerUser(registerUserDto);
+  }
+
+  @Mutation()
+  async signIn(
+    @Args('signInUserInput') signInUserDto: SignInUserDto,
+  ): Promise<UserToken> {
+    return await this.usersService.signIn(signInUserDto);
   }
 }

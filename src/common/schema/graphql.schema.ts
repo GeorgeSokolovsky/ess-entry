@@ -20,6 +20,11 @@ export class RegisterUserInput {
     password: string;
 }
 
+export class SignInUserInput {
+    login: string;
+    password: string;
+}
+
 export class Field {
     _id: string;
     name: string;
@@ -34,6 +39,8 @@ export abstract class IMutation {
     abstract createValidator(createValidatorInput?: CreateValidatorInput): Validator | Promise<Validator>;
 
     abstract registerUser(registerUserInput?: RegisterUserInput): User | Promise<User>;
+
+    abstract signIn(signInUserInput?: SignInUserInput): string | Promise<string>;
 }
 
 export class Participant {

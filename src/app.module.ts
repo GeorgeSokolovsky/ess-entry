@@ -1,20 +1,18 @@
 import { Module } from '@nestjs/common';
-import { join } from 'path';
 import { GraphQLModule } from '@nestjs/graphql';
 import { UsersModule } from './users/users.module';
 import { TemplatesModule } from './templates/templates.module';
+import { GraphQLConfigService } from './graphQL-config.service';
 
 @Module({
   imports: [
     UsersModule,
     TemplatesModule,
-    GraphQLModule.forRoot({
-      typePaths: ['./**/*.graphql'],
-      definitions: {
-        path: join(process.cwd(), 'src/common/schema/graphql.schema.ts'),
-        outputAs: 'class',
-      },
+    GraphQLModule.forRootAsync({
+      imports: [UsersModule],
+      useClass: GraphQLConfigService,
     }),
   ],
+  providers: [GraphQLConfigService],
 })
 export class AppModule {}
