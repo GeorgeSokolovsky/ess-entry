@@ -13,6 +13,11 @@ export class UsersResolvers {
     return await this.usersService.findUserById(id);
   }
 
+  @Query('verify')
+  async verifyUserToken(@Args('token') token: string): Promise<User> {
+    return await this.usersService.verifyToken(token);
+  }
+
   @Mutation()
   async registerUser(
     @Args('registerUserInput') registerUserDto: RegisterUserDto,

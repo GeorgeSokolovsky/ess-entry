@@ -19,6 +19,7 @@ input SignInUserInput {
 
 type Query {
   user(id: ID!): User
+  verify(token: String!): User
 }
 
 type Mutation {

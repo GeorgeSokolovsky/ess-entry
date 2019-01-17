@@ -79,6 +79,8 @@ export abstract class IQuery {
 
     abstract user(id: string): User | Promise<User>;
 
+    abstract verify(token: string): User | Promise<User>;
+
     abstract temp__(): boolean | Promise<boolean>;
 }
 
