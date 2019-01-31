@@ -1,7 +1,7 @@
 import { Scalar } from '@nestjs/graphql';
 import { ASTNode, Kind } from 'graphql';
 import { isString, isNumber } from 'lodash';
-import { CustomScalar } from '../../../../common/interfaces';
+import { CustomScalar } from '@common/interfaces';
 import { Payload } from '../types';
 
 @Scalar('Payload')

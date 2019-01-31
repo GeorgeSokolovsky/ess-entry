@@ -13,10 +13,18 @@ input CreateValidatorInput {
   payload: Payload
 }
 
+input UpdateValidatorInput {
+  _id: ID!
+  rule: String
+  payload: Payload
+}
+
 type Query {
-  validators: [Validator!]
+  validators: [Validator!],
+  validator(id: ID!): Validator
 }
 
 type Mutation {
   createValidator(createValidatorInput: CreateValidatorInput): Validator!
+  updateValidator(updateValidatorInput: UpdateValidatorInput): Validator!
 }

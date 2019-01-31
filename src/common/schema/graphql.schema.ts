@@ -37,6 +37,12 @@ export class UpdateTemplateInput {
     participants: string[];
 }
 
+export class UpdateValidatorInput {
+    _id: string;
+    rule?: string;
+    payload?: Payload;
+}
+
 export class Field {
     _id: string;
     name: string;
@@ -49,6 +55,8 @@ export abstract class IMutation {
     abstract createParticipant(createParticipantInput?: CreateParticipantInput): Participant | Promise<Participant>;
 
     abstract createValidator(createValidatorInput?: CreateValidatorInput): Validator | Promise<Validator>;
+
+    abstract updateValidator(updateValidatorInput?: UpdateValidatorInput): Validator | Promise<Validator>;
 
     abstract createTemplate(createTemplateInput: CreateTemplateInput): Template | Promise<Template>;
 
@@ -72,6 +80,8 @@ export abstract class IQuery {
     abstract participants(): Participant[] | Promise<Participant[]>;
 
     abstract validators(): Validator[] | Promise<Validator[]>;
+
+    abstract validator(id: string): Validator | Promise<Validator>;
 
     abstract templates(): Template[] | Promise<Template[]>;
 
