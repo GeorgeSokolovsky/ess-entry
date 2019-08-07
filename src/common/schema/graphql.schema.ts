@@ -50,6 +50,14 @@ export class Field {
 }
 
 export abstract class IMutation {
+    abstract registerUser(registerUserInput?: RegisterUserInput): User | Promise<User>;
+
+    abstract signIn(signInUserInput?: SignInUserInput): string | Promise<string>;
+
+    abstract createTemplate(createTemplateInput: CreateTemplateInput): Template | Promise<Template>;
+
+    abstract updateTemplate(id: string, updateTemplateInput: UpdateTemplateInput): Template | Promise<Template>;
+
     abstract createField(createFieldInput?: CreateFieldInput): Field | Promise<Field>;
 
     abstract createParticipant(createParticipantInput?: CreateParticipantInput): Participant | Promise<Participant>;
@@ -57,14 +65,6 @@ export abstract class IMutation {
     abstract createValidator(createValidatorInput?: CreateValidatorInput): Validator | Promise<Validator>;
 
     abstract updateValidator(updateValidatorInput?: UpdateValidatorInput): Validator | Promise<Validator>;
-
-    abstract createTemplate(createTemplateInput: CreateTemplateInput): Template | Promise<Template>;
-
-    abstract updateTemplate(id: string, updateTemplateInput: UpdateTemplateInput): Template | Promise<Template>;
-
-    abstract registerUser(registerUserInput?: RegisterUserInput): User | Promise<User>;
-
-    abstract signIn(signInUserInput?: SignInUserInput): string | Promise<string>;
 }
 
 export class Participant {
@@ -75,6 +75,14 @@ export class Participant {
 }
 
 export abstract class IQuery {
+    abstract user(id: string): User | Promise<User>;
+
+    abstract verify(token: string): User | Promise<User>;
+
+    abstract templates(): Template[] | Promise<Template[]>;
+
+    abstract template(id: string): Template | Promise<Template>;
+
     abstract fields(): Field[] | Promise<Field[]>;
 
     abstract participants(): Participant[] | Promise<Participant[]>;
@@ -82,14 +90,6 @@ export abstract class IQuery {
     abstract validators(): Validator[] | Promise<Validator[]>;
 
     abstract validator(id: string): Validator | Promise<Validator>;
-
-    abstract templates(): Template[] | Promise<Template[]>;
-
-    abstract template(id: string): Template | Promise<Template>;
-
-    abstract user(id: string): User | Promise<User>;
-
-    abstract verify(token: string): User | Promise<User>;
 
     abstract temp__(): boolean | Promise<boolean>;
 }

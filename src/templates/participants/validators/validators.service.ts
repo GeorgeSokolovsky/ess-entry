@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { Client, ClientProxy } from '@nestjs/microservices';
 import { CreateValidatorDto, UpdateValidatorDto } from './dto';
-import { Validator } from '@common/schema/graphql.schema';
+import { Validator } from '../../../common/schema/graphql.schema';
 import { templatesConnectOptions } from '../../config';
 
 @Injectable()

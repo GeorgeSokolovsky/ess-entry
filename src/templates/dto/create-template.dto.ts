@@ -1,4 +1,4 @@
-import { CreateTemplateInput } from '@common/schema/graphql.schema';
+import { CreateTemplateInput } from '../../common/schema/graphql.schema';
 import {
   IsAlphanumeric,
   IsArray,

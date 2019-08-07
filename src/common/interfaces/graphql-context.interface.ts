@@ -1,4 +1,4 @@
-import { User } from '@common/schema/graphql.schema';
+import { User } from '../schema/graphql.schema';
 
 export interface GraphQLContext {
   user: User;

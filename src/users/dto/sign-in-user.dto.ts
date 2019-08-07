@@ -1,5 +1,5 @@
 import { IsAlphanumeric, MaxLength, MinLength } from 'class-validator';
-import { SignInUserInput } from '@common/schema/graphql.schema';
+import { SignInUserInput } from '../../common/schema/graphql.schema';
 
 export class SignInUserDto extends SignInUserInput {
   @IsAlphanumeric()

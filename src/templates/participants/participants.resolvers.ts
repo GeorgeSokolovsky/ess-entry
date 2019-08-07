@@ -6,13 +6,13 @@ import {
   ResolveProperty,
   Parent,
 } from '@nestjs/graphql';
-import { Participant, Validator } from '@common/schema/graphql.schema';
+import { Participant, Validator } from '../../common/schema/graphql.schema';
 import { ValidatorsService } from './validators/validators.service';
 import { ParticipantsService } from './participants.service';
 import { CreateParticipantDto } from './dto';
 import { ParticipantQuery } from './interfaces';
 import { UseGuards } from '@nestjs/common';
-import { AuthGuard } from '@common/guards';
+import { AuthGuard } from '../../common/guards';
 
 @Resolver('Participant')
 @UseGuards(new AuthGuard())

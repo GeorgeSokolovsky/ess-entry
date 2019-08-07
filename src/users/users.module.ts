@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { UsersResolvers } from './users.resolvers';
-import { CommonModule } from '@common/common.module';
+import { CommonModule } from '../common/common.module';
 
 @Module({
   imports: [CommonModule],

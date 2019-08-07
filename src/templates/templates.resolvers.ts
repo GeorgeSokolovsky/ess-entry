@@ -8,7 +8,7 @@ import {
   Context,
 } from '@nestjs/graphql';
 import { UseGuards } from '@nestjs/common';
-import { AuthGuard } from '@common/guards';
+import { AuthGuard } from '../common/guards';
 import {
   CreateTemplateInput,
   Field,
@@ -16,13 +16,13 @@ import {
   Template,
   UpdateTemplateInput,
   User,
-} from '@common/schema/graphql.schema';
+} from '../common/schema/graphql.schema';
 import { TemplatesService } from './templates.service';
 import { FieldsService } from './fields/fields.service';
 import { TemplateQuery } from './interfaces';
 import { ParticipantsService } from './participants/participants.service';
-import { UsersService } from '@common/services';
-import { GraphQLContext } from '@common/interfaces';
+import { UsersService } from '../common/services';
+import { GraphQLContext } from '../common/interfaces';
 
 @Resolver('Template')
 @UseGuards(new AuthGuard())

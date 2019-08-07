@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { Client, ClientProxy } from '@nestjs/microservices';
-import { Field } from '@common/schema/graphql.schema';
+import { Field } from '../../common/schema/graphql.schema';
 import { templatesConnectOptions } from '../config';
 import { CreateFieldDto } from './dto';
 

@@ -1,9 +1,9 @@
 import { Args, Query, Resolver, Mutation } from '@nestjs/graphql';
-import { Field } from '@common/schema/graphql.schema';
+import { Field } from '../../common/schema/graphql.schema';
 import { CreateFieldDto } from './dto';
 import { FieldsService } from './fields.service';
 import { UseGuards } from '@nestjs/common';
-import { AuthGuard } from '@common/guards';
+import { AuthGuard } from '../../common/guards';
 
 @Resolver('Field')
 @UseGuards(new AuthGuard())

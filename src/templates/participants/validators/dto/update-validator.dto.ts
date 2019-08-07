@@ -1,8 +1,5 @@
-import { MinLength, IsString, IsNotEmpty } from 'class-validator';
-import {
-  CreateValidatorInput,
-  UpdateValidatorInput,
-} from '@common/schema/graphql.schema';
+import { IsNotEmpty, IsString, MinLength } from 'class-validator';
+import { UpdateValidatorInput } from '../../../../common/schema/graphql.schema';
 import { Payload } from '../types';
 
 export class UpdateValidatorDto extends UpdateValidatorInput {

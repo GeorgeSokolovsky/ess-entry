@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { Client, ClientProxy } from '@nestjs/microservices';
-import { Participant } from '@common/schema/graphql.schema';
+import { Participant } from '../../common/schema/graphql.schema';
 import { templatesConnectOptions } from '../config';
 import { CreateParticipantDto } from './dto';
 

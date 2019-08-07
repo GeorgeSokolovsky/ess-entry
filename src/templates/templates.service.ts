@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { Client, ClientProxy } from '@nestjs/microservices';
 import { templatesConnectOptions } from './config';
-import { Template } from '@common/schema/graphql.schema';
+import { Template } from '../common/schema/graphql.schema';
 import { CreateTemplateDto, UpdateTemplateDto } from './dto';
 
 @Injectable()

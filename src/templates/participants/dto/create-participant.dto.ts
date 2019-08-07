@@ -1,4 +1,4 @@
-import { CreateParticipantInput } from '@common/schema/graphql.schema';
+import { CreateParticipantInput } from '../../../common/schema/graphql.schema';
 import { IsAlphanumeric, MaxLength, MinLength } from 'class-validator';
 
 export class CreateParticipantDto extends CreateParticipantInput {

@@ -3,7 +3,7 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { UsersModule } from './users/users.module';
 import { TemplatesModule } from './templates/templates.module';
 import { GraphQLConfigService } from './graphQL-config.service';
-import { CommonModule } from '@common/common.module';
+import { CommonModule } from './common/common.module';
 
 @Module({
   imports: [

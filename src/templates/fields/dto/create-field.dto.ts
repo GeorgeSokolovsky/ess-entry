@@ -1,4 +1,4 @@
-import { CreateFieldInput } from '@common/schema/graphql.schema';
+import { CreateFieldInput } from '../../../common/schema/graphql.schema';
 import { IsAlpha, IsAlphanumeric, MaxLength, MinLength } from 'class-validator';
 
 export class CreateFieldDto extends CreateFieldInput {
