@@ -7,7 +7,9 @@ async function bootstrap() {
 
   app.useGlobalPipes(new ValidationPipe());
 
-  await app.listen(9000, () => console.info('ESS: Entry point is running'));
+  await app.listen(process.env.PORT || 9000, () =>
+    console.info('ESS: Entry point is running'),
+  );
 }
 
 (async () => await bootstrap())();
