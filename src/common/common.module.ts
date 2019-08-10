@@ -1,8 +1,15 @@
 import { Module } from '@nestjs/common';
-import { UsersService } from './services';
+import { ConfigsService } from './services';
+import { PROCESS_TOKEN } from './tokens';
 
 @Module({
-  providers: [UsersService],
-  exports: [UsersService],
+  providers: [
+    ConfigsService,
+    {
+      provide: PROCESS_TOKEN,
+      useValue: process,
+    },
+  ],
+  exports: [ConfigsService],
 })
 export class CommonModule {}

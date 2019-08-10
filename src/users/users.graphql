@@ -17,6 +17,12 @@ input SignInUserInput {
   password: String!
 }
 
+input UpdateUserInput {
+  id: ID!
+  firstName: String
+  secondName: String
+}
+
 type Query {
   user(id: ID!): User
   verify(token: String!): User
