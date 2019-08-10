@@ -1,41 +1,29 @@
 import { Injectable } from '@nestjs/common';
-import { Client, ClientProxy } from '@nestjs/microservices';
 import { CreateValidatorDto, UpdateValidatorDto } from './dto';
 import { Validator } from '../../../common/schema/graphql.schema';
-import { templatesConnectOptions } from '../../config';
+import { ValidatorsRepository } from './validators.repository';
 
 @Injectable()
 export class ValidatorsService {
-  @Client(templatesConnectOptions)
-  private readonly client: ClientProxy;
+  constructor(private readonly repository: ValidatorsRepository) {}
 
   async create(createValidatorDto: CreateValidatorDto): Promise<Validator> {
-    return await this.client
-      .send({ cmd: 'create_validator' }, createValidatorDto)
-      .toPromise();
+    return await this.repository.create(createValidatorDto);
   }
 
   async findAll(): Promise<ReadonlyArray<Validator>> {
-    return await this.client
-      .send({ cmd: 'find_all_validators' }, {})
-      .toPromise();
+    return await this.repository.findAll();
   }
 
   async findById(id: string): Promise<Validator> {
-    return await this.client
-      .send({ cmd: 'find_by_id_validator' }, { _id: id })
-      .toPromise();
+    return await this.repository.findById(id);
   }
 
   async findByIds(ids: string[]): Promise<ReadonlyArray<Validator>> {
-    return await this.client
-      .send({ cmd: 'find_by_ids_validators' }, ids)
-      .toPromise();
+    return await this.repository.findByIds(ids);
   }
 
   async update(updateValidatorDto: UpdateValidatorDto): Promise<Validator> {
-    return await this.client
-      .send({ cmd: 'update_validator' }, updateValidatorDto)
-      .toPromise();
+    return await this.repository.update(updateValidatorDto);
   }
 }

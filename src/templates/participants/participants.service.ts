@@ -1,31 +1,25 @@
 import { Injectable } from '@nestjs/common';
-import { Client, ClientProxy } from '@nestjs/microservices';
 import { Participant } from '../../common/schema/graphql.schema';
-import { templatesConnectOptions } from '../config';
 import { CreateParticipantDto } from './dto';
+import { ParticipantsRepository } from './participants.repository';
 
 @Injectable()
 export class ParticipantsService {
-  @Client(templatesConnectOptions)
-  private readonly client: ClientProxy;
+  constructor(private readonly repository: ParticipantsRepository) {}
 
   async create(
     createParticipantDto: CreateParticipantDto,
   ): Promise<Participant> {
-    return await this.client
-      .send({ cmd: 'create_participant' }, createParticipantDto)
-      .toPromise();
+    return await this.repository.create(createParticipantDto);
   }
 
   async findAll(): Promise<ReadonlyArray<Participant>> {
-    return await this.client
-      .send({ cmd: 'find_all_participants' }, {})
-      .toPromise();
+    return await this.repository.findAll();
   }
 
-  async findByIds(ids: ReadonlyArray<string>): Promise<ReadonlyArray<Participant>> {
-    return await this.client
-      .send({ cmd: 'find_by_ids_participants'}, ids)
-      .toPromise();
+  async findByIds(
+    ids: ReadonlyArray<string>,
+  ): Promise<ReadonlyArray<Participant>> {
+    return await this.repository.findByIds(ids);
   }
 }
