@@ -1,27 +1,21 @@
 import { Injectable } from '@nestjs/common';
-import { Client, ClientProxy } from '@nestjs/microservices';
 import { Field } from '../../common/schema/graphql.schema';
-import { templatesConnectOptions } from '../config';
 import { CreateFieldDto } from './dto';
+import { FieldsRepository } from './fields.repository';
 
 @Injectable()
 export class FieldsService {
-  @Client(templatesConnectOptions)
-  private readonly client: ClientProxy;
+  constructor(private readonly repository: FieldsRepository) {}
 
   async create(createFieldDto: CreateFieldDto): Promise<Field> {
-    return this.client
-      .send({ cmd: 'create_field' }, createFieldDto)
-      .toPromise();
+    return this.repository.create(createFieldDto);
   }
 
   async findAll(): Promise<ReadonlyArray<Field>> {
-    return await this.client.send({ cmd: 'find_all_fields' }, {}).toPromise();
+    return await this.repository.findAll();
   }
 
   async findByIds(ids: string[]): Promise<ReadonlyArray<Field>> {
-    return await this.client
-      .send({ cmd: 'find_by_ids_fields' }, ids)
-      .toPromise();
+    return await this.repository.findByIds(ids);
   }
 }

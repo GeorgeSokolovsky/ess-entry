@@ -2,6 +2,8 @@ import { Inject, Injectable } from '@nestjs/common';
 import { PROCESS_TOKEN } from '../tokens';
 import { Process } from '../interfaces';
 
+const DEFAULT_MONGO_URI = 'mongodb://localhost:27017/';
+
 @Injectable()
 export class ConfigsService {
   constructor(@Inject(PROCESS_TOKEN) private readonly process: Process) {}
@@ -15,6 +17,6 @@ export class ConfigsService {
   }
 
   getMongoURI(): string {
-    return this.process.env.MONGODB_URI;
+    return this.process.env.MONGODB_URI || DEFAULT_MONGO_URI;
   }
 }
