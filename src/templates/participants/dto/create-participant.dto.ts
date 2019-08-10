@@ -1,5 +1,8 @@
-import { CreateParticipantInput } from '../../../common/schema/graphql.schema';
-import { IsAlphanumeric, MaxLength, MinLength } from 'class-validator';
+import {
+  CreateParticipantInput,
+  Validator,
+} from '../../../common/schema/graphql.schema';
+import { IsAlphanumeric, IsArray, MaxLength, MinLength } from 'class-validator';
 
 export class CreateParticipantDto extends CreateParticipantInput {
   @MinLength(4)
@@ -10,4 +13,7 @@ export class CreateParticipantDto extends CreateParticipantInput {
   @MaxLength(16)
   @IsAlphanumeric()
   role: string;
+
+  @IsArray()
+  validators: string[];
 }

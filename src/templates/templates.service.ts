@@ -1,38 +1,28 @@
 import { Injectable } from '@nestjs/common';
-import { Client, ClientProxy } from '@nestjs/microservices';
-import { templatesConnectOptions } from './config';
 import { Template } from '../common/schema/graphql.schema';
 import { CreateTemplateDto, UpdateTemplateDto } from './dto';
+import { TemplatesRepository } from './templates.repository';
 
 @Injectable()
 export class TemplatesService {
-  @Client(templatesConnectOptions)
-  private readonly client: ClientProxy;
+  constructor(private readonly repository: TemplatesRepository) {}
 
   async create(createTemplateDto: CreateTemplateDto): Promise<Template> {
-    return await this.client
-      .send({ cmd: 'create_template' }, createTemplateDto)
-      .toPromise();
+    return await this.repository.create(createTemplateDto);
   }
 
   async findAll(): Promise<ReadonlyArray<Template>> {
-    return await this.client
-      .send({ cmd: 'find_all_templates' }, {})
-      .toPromise();
+    return await this.repository.findAll();
   }
 
   async findOneById(id: string): Promise<Template> {
-    return await this.client
-      .send({ cmd: 'find_by_id_template' }, id)
-      .toPromise();
+    return await this.repository.findById(id);
   }
 
   async updateTemplate(
     id: string,
     patch: UpdateTemplateDto,
   ): Promise<Template> {
-    return await this.client
-      .send({ cmd: 'modify_template' }, { id, patch })
-      .toPromise();
+    return await this.repository.update(id, patch);
   }
 }
