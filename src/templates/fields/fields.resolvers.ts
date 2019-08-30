@@ -30,6 +30,11 @@ export class FieldsResolvers {
     @Args('updateFieldInput') updateFieldInput: UpdateFieldDto,
     @Context() { user }: GraphQLContext,
   ): Promise<Field> {
-    return this.fieldsService.update(id, updateFieldInput);
+    const updateFieldDto = {
+      ...updateFieldInput,
+      updatedBy: user._id,
+    };
+
+    return this.fieldsService.update(id, updateFieldDto);
   }
 }

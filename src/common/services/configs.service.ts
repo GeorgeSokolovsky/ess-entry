@@ -13,7 +13,7 @@ export class ConfigsService {
   }
 
   getAuthExpiresIn(): number {
-    return this.process.env.AUTH_EXPIRES_IN;
+    return +this.process.env.AUTH_EXPIRES_IN;
   }
 
   getMongoURI(): string {
