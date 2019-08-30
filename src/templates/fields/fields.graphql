@@ -13,10 +13,16 @@ input CreateFieldInput {
   type: String!
 }
 
+input UpdateFieldInput {
+  name: String
+  type: String
+}
+
 type Query {
   fields: [Field!]
 }
 
 type Mutation {
   createField(createFieldInput: CreateFieldInput): Field!
+  updateField(id: ID!, updateFieldInput: UpdateFieldInput): Field!
 }

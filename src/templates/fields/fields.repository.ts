@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { CreateFieldDto } from './dto';
+import { CreateFieldDto, UpdateFieldDto } from './dto';
 import { FIELD_MODEL } from './tokens/field-model.token';
 import { ID } from '../../common/types';
 import { Field } from './interface/field.interface';
@@ -16,6 +16,10 @@ export class FieldsRepository {
     const field = new this.fieldModel(createFieldDto);
 
     return await field.save();
+  }
+
+  async update(id: ID, patch: UpdateFieldDto): Promise<Field> {
+    return this.fieldModel.findByIdAndUpdate(id, patch);
   }
 
   async findAll(): Promise<ReadonlyArray<Field>> {

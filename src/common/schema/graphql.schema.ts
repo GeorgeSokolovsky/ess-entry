@@ -31,6 +31,11 @@ export class SignInUserInput {
     password: string;
 }
 
+export class UpdateFieldInput {
+    name?: string;
+    type?: string;
+}
+
 export class UpdateTemplateInput {
     name: string;
     fields: string[];
@@ -69,6 +74,8 @@ export abstract class IMutation {
     abstract signIn(signInUserInput?: SignInUserInput): string | Promise<string>;
 
     abstract createField(createFieldInput?: CreateFieldInput): Field | Promise<Field>;
+
+    abstract updateField(id: string, updateFieldInput?: UpdateFieldInput): Field | Promise<Field>;
 
     abstract createParticipant(createParticipantInput?: CreateParticipantInput): Participant | Promise<Participant>;
 
